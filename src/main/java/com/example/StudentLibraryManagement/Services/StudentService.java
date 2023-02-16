@@ -1,5 +1,6 @@
 package com.example.StudentLibraryManagement.Services;
 
+import com.example.StudentLibraryManagement.DTOs.StudentUpdateMobReqDto;
 import com.example.StudentLibraryManagement.Enums.CardStatus;
 import com.example.StudentLibraryManagement.Models.Card;
 import com.example.StudentLibraryManagement.Models.Student;
@@ -30,5 +31,21 @@ public class StudentService {
         //by cascade effect, child will be automatically saved(cardRepository saved)
 
         return "Student and card added succesfully";
+    }
+
+    public String getNameByEmailId(String emailId){
+        Student student=studentRepository.findbyemailId(emailId);
+        return student.getName();
+    }
+
+    public String updateMobNo(StudentUpdateMobReqDto updateMobReq)
+    {
+        Student student=new Student();
+
+        Student originalStudent=studentRepository.findById(updateMobReq.getId()).get();
+        originalStudent.setMobNo(updateMobReq.getMobNo());
+
+        studentRepository.save(originalStudent);
+        return"Mobile Number Updated Succesfully";
     }
 }

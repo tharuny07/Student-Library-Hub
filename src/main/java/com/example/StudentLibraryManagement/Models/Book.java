@@ -3,6 +3,9 @@ package com.example.StudentLibraryManagement.Models;
 import com.example.StudentLibraryManagement.Enums.Genre;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="book")
 public class Book {
@@ -14,6 +17,9 @@ public class Book {
     private int pages;
     @Enumerated(value = EnumType.STRING)
     private Genre genre;
+    private double rating;
+
+
 
     //Book is child w.r.t author
     //Adding a foreign key column
@@ -26,6 +32,12 @@ public class Book {
     @ManyToOne
     @JoinColumn
     private Card card;
+
+    //Book is parent w.r.t transaction
+
+    @OneToMany(mappedBy ="book",cascade = CascadeType.ALL)
+    private List<Transactions> transactionList=new ArrayList<>();
+
 
     public Author getAuthor() {
         return author;
@@ -73,5 +85,12 @@ public class Book {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }

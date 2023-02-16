@@ -22,9 +22,31 @@ public class Card {
     @Enumerated(value=EnumType.STRING)
     private CardStatus cardStatus;
 
+    //card is child w.r.t student
     @OneToOne
-    @JoinColumn
+    @JoinColumn //Foreign key attribute
     private Student studentVariableName;
+
+
+    //card is parent w.r.t book
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)//bidirection mapping
+    private List<Book> booksIssued=new ArrayList<>();
+
+    //card is parent w.r.t transactions
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)//bidirectional mapping
+    private List<Transactions> transactionsList=new ArrayList<>();
+
+
+    public Card() {
+    }
+
+    public List<Transactions> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transactions> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
 
     public List<Book> getBooksIssued() {
         return booksIssued;
@@ -33,11 +55,6 @@ public class Card {
     public void setBooksIssued(List<Book> booksIssued) {
         this.booksIssued = booksIssued;
     }
-
-    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
-    private List<Book> booksIssued=new ArrayList<>();
-
-
     public Student getStudentVariableName() {
         return studentVariableName;
     }
