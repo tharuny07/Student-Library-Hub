@@ -1,6 +1,6 @@
 package com.example.StudentLibraryManagement.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;

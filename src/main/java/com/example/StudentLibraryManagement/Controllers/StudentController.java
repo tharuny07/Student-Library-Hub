@@ -16,10 +16,6 @@ public class StudentController {
     public String createStudent(@RequestBody Student student){
         return studentService.createStudent(student);
     }
-    @GetMapping("/get-name-by-emailid")
-    public String getNameByEmailId(@RequestParam("email") String emailId){
-       return studentService.getNameByEmailId(emailId);
-    }
 
     @PutMapping("/update-mobile-no")
     public String updateMobNo(@RequestBody StudentUpdateMobReqDto updateMobReq){

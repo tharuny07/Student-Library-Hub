@@ -17,7 +17,7 @@ public class StudentService {
     {
         Card card=new Card();
         card.setCardStatus(CardStatus.ACTIVATED);//card status is being set
-        card.setStudentVariableName(student);//foreignkey attribute
+        card.setStudentVariableName(student);//foreign key attribute
         //filling out the values of unidirectional mapping
 
         //going to student object
@@ -33,19 +33,12 @@ public class StudentService {
         return "Student and card added succesfully";
     }
 
-    public String getNameByEmailId(String emailId){
-        Student student=studentRepository.findbyemailId(emailId);
-        return student.getName();
-    }
-
     public String updateMobNo(StudentUpdateMobReqDto updateMobReq)
     {
-        Student student=new Student();
-
         Student originalStudent=studentRepository.findById(updateMobReq.getId()).get();
         originalStudent.setMobNo(updateMobReq.getMobNo());
 
         studentRepository.save(originalStudent);
-        return"Mobile Number Updated Succesfully";
+        return "Mobile Number Updated Succesfully";
     }
 }

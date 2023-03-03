@@ -1,7 +1,7 @@
 package com.example.StudentLibraryManagement.Models;
 
 import com.example.StudentLibraryManagement.Enums.TransactionStatus;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class Transactions {
     @Enumerated(value = EnumType.STRING)
     TransactionStatus transactionStatus;
     private int fine;
-
+    private String transactionId=UUID.randomUUID().toString();
     @CreationTimestamp
     private Date transactionDate;
     private boolean isIssueOperation;
@@ -82,6 +82,14 @@ public class Transactions {
 
     public Card getCard() {
         return card;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
     public void setCard(Card card) {

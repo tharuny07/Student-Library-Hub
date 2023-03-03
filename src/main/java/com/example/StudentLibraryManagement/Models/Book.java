@@ -1,7 +1,7 @@
 package com.example.StudentLibraryManagement.Models;
 
 import com.example.StudentLibraryManagement.Enums.Genre;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Book {
     private Genre genre;
     private double rating;
 
-
+  private boolean isIssued;
 
     //Book is child w.r.t author
     //Adding a foreign key column
@@ -92,5 +92,26 @@ public class Book {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public List<Transactions> getTransactionList() {
+        return transactionList;
+    }
+
+    public boolean isIssued() {
+        return isIssued;
+    }
+
+    public void setIssued(boolean issued) {
+        isIssued = issued;
+    }
+
+    public void setTransactionList(List<Transactions> transactionList) {
+        this.transactionList = transactionList;
+
     }
 }

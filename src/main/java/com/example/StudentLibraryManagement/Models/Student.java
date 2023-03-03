@@ -1,6 +1,6 @@
 package com.example.StudentLibraryManagement.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
